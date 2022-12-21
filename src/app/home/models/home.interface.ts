@@ -1,9 +1,7 @@
-export interface SlideOpts {
-  freeMode?: boolean;
-  slidesPerView: number;
-  slidesOffSetBefore?: number;
-  spaceBetween: number;
-  centerSlides?: boolean;
+export interface HomeData {
+  categories: Category[];
+  highlights: Highlight[];
+  featured: Featured[];
 }
 
 export interface Category {
@@ -15,7 +13,7 @@ export interface Highlight {
   img: string;
 }
 
-export interface Feature {
+export interface Featured {
   distance: string;
   img: string;
   name: string;

@@ -1,4 +1,4 @@
-import { SlideOpts } from '../models/home.interface';
+import { SlideOpts } from 'src/app/shared/models/slides.interface';
 
 export const catSlideSet: SlideOpts = {
   freeMode: true,
