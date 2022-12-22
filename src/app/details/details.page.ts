@@ -68,15 +68,19 @@ export class DetailsPage implements OnInit, AfterViewInit {
 
   // Handle click on a button within slides
   // Automatically scroll to viewchild
-  selectCategory(index: number) {
+  selectCategory(index: number): void {
     const child: HTMLElement = this.listElements[index]?.nativeElement;
     this.content.scrollToPoint(0, child.offsetTop - 120, 1000);
   }
 
-  onScroll(eve: any) {
+  onScroll(eve: any): void {
     const offset = eve.detail.scrollTop;
     this.categorySlidesVisible = offset > 500;
 
+    this.elementActiveToGo();
+  }
+
+  elementActiveToGo(): void {
     for (let i = 0; i < this.listElements.length; i++) {
       const item = this.listElements[i].nativeElement;
 
@@ -88,12 +92,10 @@ export class DetailsPage implements OnInit, AfterViewInit {
     }
   }
 
-  isElementInViewport(el: HTMLElement) {
-    const rect = el.getBoundingClientRect();
-
+  isElementInViewport(el: HTMLElement): boolean {
     return (
-      rect.top >= 0 &&
-      rect.bottom <=
+      el.getBoundingClientRect().top >= 0 &&
+      el.getBoundingClientRect().bottom <=
         (window.innerHeight || document.documentElement.clientHeight)
     );
   }
