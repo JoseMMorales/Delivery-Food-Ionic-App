@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { DetailsPageRoutingModule } from './details-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
-import { DetailsPage } from './details.page';
+import { DetailsPage } from './page/details.page';
 
 @NgModule({
   imports: [

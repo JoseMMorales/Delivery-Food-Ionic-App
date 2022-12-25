@@ -12,9 +12,9 @@ import {
 } from '@angular/core';
 import { IonContent, IonList, IonSlides, isPlatform } from '@ionic/angular';
 
-import { SlideOpts } from '../shared/models/slides.interface';
-import { detailSlideSet } from './const/details.const';
-import { DetailData } from './models/detail.interface';
+import { SlideOpts } from '../../shared/models/slides.interface';
+import { detailSlideSet } from '../const/details.const';
+import { DetailData } from '../models/detail.interface';
 
 @Component({
   selector: 'app-details',

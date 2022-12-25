@@ -1,19 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
-import { SlideOpts } from '../shared/models/slides.interface';
+import { SlideOpts } from '../../shared/models/slides.interface';
 import {
   isLocationDetail,
   catSlideSet,
   highlightSlideSet,
   featuresSlideSet,
-} from './const/home.const';
+} from '../const/home.const';
 import {
   Category,
   Featured,
   Highlight,
   HomeData,
-} from './models/home.interface';
+} from '../models/home.interface';
 
 @Component({
   selector: 'app-home',
