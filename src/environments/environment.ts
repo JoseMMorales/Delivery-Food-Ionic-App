@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  foodUIUrl: 'https://devdactic.fra1.digitaloceanspaces.com/foodui',
 };
 
 /*

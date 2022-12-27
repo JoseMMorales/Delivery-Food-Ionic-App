@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { SlideOpts } from '../../../shared/models/slides.interface';
 import {
@@ -8,12 +8,7 @@ import {
   highlightSlideSet,
   featuresSlideSet,
 } from '../const/home.const';
-import {
-  Category,
-  Featured,
-  Highlight,
-  HomeData,
-} from '../models/home.interface';
+import { Category, Featured, Highlight } from '../models/home.interface';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +24,7 @@ export class HomePage implements OnInit {
   highlightSlideOpts: SlideOpts;
   catSlideOpts: SlideOpts;
 
-  constructor(private http: HttpClient) {
+  constructor(private activeRoute: ActivatedRoute) {
     this.showLocationDetail = isLocationDetail;
     this.featuresSlideOpts = featuresSlideSet;
     this.highlightSlideOpts = highlightSlideSet;
@@ -37,19 +32,15 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.http
-      .get<HomeData>(
-        'https://devdactic.fra1.digitaloceanspaces.com/foodui/home.json'
-      )
-      .subscribe({
-        next: (res: HomeData) => {
-          this.categories = res.categories;
-          this.highlights = res.highlights;
-          this.featured = res.featured;
-        },
-        error: (e: any) => console.error(e),
-        complete: () => console.log('complete'),
-      });
+    this.activeRoute.data.subscribe({
+      next: ({ homeResolver }) => {
+        this.categories = homeResolver['categories'];
+        this.highlights = homeResolver['highlights'];
+        this.featured = homeResolver['featured'];
+      },
+      error: (error: ErrorEvent) => console.error(error),
+      complete: () => console.log('complete'),
+    });
   }
 
   doRefresh(eve: any) {

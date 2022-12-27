@@ -6,6 +6,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 
 import { HomePage } from './page/home.page';
+import { HomeResolver } from './resolver/home.resolver.service';
 
 @NgModule({
   imports: [
@@ -16,5 +17,6 @@ import { HomePage } from './page/home.page';
     SharedModule,
   ],
   declarations: [HomePage],
+  providers: [HomeResolver],
 })
 export class HomePageModule {}
