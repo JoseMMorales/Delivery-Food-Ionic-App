@@ -60,11 +60,8 @@ export class DetailsPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    console.log(this.lists);
-
     this.subscription$ = this.lists?.changes.subscribe((_) => {
       this.listElements = this.lists.toArray();
-      console.log(this.listElements);
     });
   }
 
@@ -75,10 +72,7 @@ export class DetailsPage implements OnInit, AfterViewInit, OnDestroy {
   // Handle click on a button within slides
   // Automatically scroll to viewchild
   selectCategory(index: number): void {
-    console.log(index);
-
     const child: HTMLElement = this.listElements[index]?.nativeElement;
-    console.log(child);
 
     this.content.scrollToPoint(0, child.offsetTop - 80, 1000);
   }
@@ -93,8 +87,6 @@ export class DetailsPage implements OnInit, AfterViewInit, OnDestroy {
   elementActiveToGo(): void {
     this.listElements.some((element, index) => {
       if (this.isElementInViewport(element.nativeElement)) {
-        console.log(index);
-
         this.activeCategory = index;
         this.slides.slideTo(index);
         return;
